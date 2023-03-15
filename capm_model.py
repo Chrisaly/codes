@@ -27,6 +27,6 @@ rendements_marché = [0.055, -0.09, -0.041, 0.045, 0.022]
 
 beta, alpha, r_value, p_value, std_err = \
 stats.linregress(rendements_titre, rendements_marché)
-q
+
 
 
