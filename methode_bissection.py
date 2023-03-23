@@ -31,5 +31,5 @@ def bissection(f, a, b, tol=0.1, maxiter=10):
             b = c
     return c, n
 
-y = lambda x: x**3 + 2*x**2 - 5
-racine, iterations = bissection(y, -5, 5, 0.00001, 100)
+#y = lambda x: x**3 + 2*x**2 - 5
+#racine, iterations = bissection(y, -5, 5, 0.00001, 100)
