@@ -40,5 +40,5 @@ def recherche_incrementale(f, a, b, dx):
     else:
         return (a + c)/2., n
     
-#y = lambda x: x**3 + 2.0*x**2 - 5.
+#y = lambda x: x**3 + 2.0*x**2 - 5
 #racine,iterations = recherche_incrementale(y, -5., 5., 0.001)
