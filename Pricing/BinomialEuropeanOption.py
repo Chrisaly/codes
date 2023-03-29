@@ -19,7 +19,7 @@ from StockOption import StockOption
 class BinomialEuropeanOption(StockOption):
     
     def __setup_parameters__(self):
-        """ Required calculations for the model """
+        """ Calculs requis pour le modèle """
         self.M = self.N + 1 # Number of terminal nodes of tree
         self.u = 1 + self.pu # Expected value in the up state
         self.d = 1 - self.pd # Expected value in the down state
@@ -56,4 +56,4 @@ class BinomialEuropeanOption(StockOption):
         self._initialize_stock_price_tree_()
         payoffs = self.__begin_tree_traversal__()
         return payoffs[0]
-    # Option value converges to first node
+    # La valeur de l'option converge vers le premier nœud
