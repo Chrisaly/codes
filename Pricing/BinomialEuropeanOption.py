@@ -28,20 +28,20 @@ class BinomialEuropeanOption(StockOption):
         self.qd = 1-self.qu
         
     def _initialize_stock_price_tree_(self):
-        # Initialize terminal price nodes to zeros
+        # Initialiser les nœuds de prix terminaux à zéro
         self.STs = np.zeros(self.M)
-        # Calculate expected stock prices for each node
+        # Calculer les prix des actions attendus pour chaque nœud
         for i in range(self.M):
             self.STs[i] = self.S0*(self.u**(self.N-i))*(self.d**i)
             
     def _initialize_payoffs_tree_(self):
-        # Get payoffs when the option expires at terminal nodes
+        # Obtenez des gains lorsque l'option expire aux nœuds terminaux
         payoffs = np.maximum(0, (self.STs-self.K) if self.is_call else(self.K-self.STs))
         return payoffs
     
     def _traverse_tree_(self, payoffs):
-        # Starting from the time the option expires, traverse
-        # backwards and calculate discounted payoffs at each node
+        # A partir de l'expiration de l'option, parcourir
+        # en arrière et calculer les gains actualisés à chaque nœud
         for i in range(self.N):
             payoffs = (payoffs[:-1] * self.qu + payoffs[1:] * self.qd) * self.df
         return payoffs
@@ -51,7 +51,7 @@ class BinomialEuropeanOption(StockOption):
         return self._traverse_tree_(payoffs)
     
     def price(self):
-        """ The pricing implementation """
+        """ La mise en place de la tarification """
         self.__setup_parameters__()
         self._initialize_stock_price_tree_()
         payoffs = self.__begin_tree_traversal__()
